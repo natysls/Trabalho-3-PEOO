@@ -36,12 +36,12 @@ public class ControleRemoto {
 	}
 	public void proximoCanal() {
 		for(Televisao tv: listaDeTVs) {
-			tv.alterarCanal("incremento");
+			tv.alterarCanal("proximo");
 		}
 	}
 	public void anteriorCanal() {
 		for(Televisao tv: listaDeTVs) {	
-			tv.alterarCanal("decremento");
+			tv.alterarCanal("anterior");
 		}
 	}
 	public void informarDados() {

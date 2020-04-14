@@ -80,8 +80,11 @@ public abstract class Televisao {
     	int aux = canaisCadastrados.indexOf(canalAtual); //indice do canal atual
     	if(alteracao.equalsIgnoreCase("proximo")) {
     		aux += 1; //aumenta um indice
-    		if(aux == (this.canaisCadastrados.size() - 1)) { //se o indice atual for igual ao final
+    		aux %= (this.canaisCadastrados.size() - 1);
+    		if(aux < 0){ 
     			setCanalAtual(this.canaisCadastrados.get(0));
+    		}else {
+    			//aux;
     		}
     	}else if(alteracao.equalsIgnoreCase("anterior")){
     		aux -= 1; //diminui um
@@ -93,6 +96,7 @@ public abstract class Televisao {
     			System.out.println("Canal invalido");
     		}
     	}
+    	setCanalAtual(this.canaisCadastrados.get(aux));
     }
     
     public void informarDados() {
