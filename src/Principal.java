@@ -30,9 +30,9 @@ public class Principal {
 			System.out.println("A - SmartTV  ou  B - TVHD");
 			String escolha = teclado.next();
 			if (escolha.equalsIgnoreCase("A")) {
-				opcoes(smarttv, controle);
+				opcoes(smarttv, controle, canais);
 			} else if (escolha.equalsIgnoreCase("B")) {
-				opcoes(tvhd, controle);
+				opcoes(tvhd, controle, canais);
 			} else {
 				System.out.println("Opção inválida");
 			}
@@ -40,8 +40,8 @@ public class Principal {
 
 	}
 
-	// Imprime as opções
-	private static void opcoes(Televisao tv, ControleRemoto controle) {
+	// Realiza as opções
+	private static void opcoes(Televisao tv, ControleRemoto controle, ArrayList<Canal> canais) {
 		Scanner scan = new Scanner(System.in);
 		while (true) { // loop infinito.
 			printMenu(); // imprime o Menu
@@ -61,9 +61,8 @@ public class Principal {
 			} else if (opcao == 5) {
 				controle.informarDados(tv);
 			} else if (opcao == 6) {
-				Scanner tec = new Scanner(System.in);
-				System.out.println("Digite o canal desejado");
-				int numCanal = tec.nextInt();
+				System.out.println("Digite o número do canal para sintonizar");
+				int numCanal = scan.nextInt();
 				try {
 					controle.sintonizarCanal(numCanal);
 				} catch (ExceptionCanalInexistente e) {
@@ -72,6 +71,20 @@ public class Principal {
 				System.out.println("Canal Atual: " + tv.getCanalAtual() + "\n");
 			} else if (opcao == 7) {
 				controle.mostrarGrade();
+			} else if (opcao == 8) {
+				System.out.println("Digite o número do canal para adicionar");
+				int numCanal = scan.nextInt();
+				System.out.println("Digite o nome do canal para adicionar");
+				String nome = scan.next();
+				System.out.println("O canal é HD? [true / false]");
+				boolean hd = scan.hasNextBoolean();
+				canais.add(new Canal(numCanal, nome, hd));
+				tv.cadastrarCanais();
+				try {
+					controle.adicionarTV(tv);
+				} catch (ExceptionTVCadastrada e) {
+					e.getMessage();
+				}
 			} else if (opcao == 0) { // o Loop para aqui.
 				System.exit(0); // Saindo do programa
 			} else {
@@ -91,6 +104,7 @@ public class Principal {
 		System.out.println("5 - Informar Dados do Canal Atual");
 		System.out.println("6 - Sintonizar Canal");
 		System.out.println("7 - Mostrar Grade");
+		System.out.println("8 - Adicionar Canal");
 		System.out.println("0 - EXIT");
 	}
 }

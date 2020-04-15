@@ -10,9 +10,10 @@ public class ControleRemoto {
 	public void setListaDeTVs(ArrayList<Televisao> listaDeTVs) {
 		this.listaDeTVs = listaDeTVs;
 	}
+	
 
 	public void adicionarTV(Televisao tv) throws ExceptionTVCadastrada {
-		if (!this.listaDeTVs.contains(tv)) {
+		if (!(this.listaDeTVs.contains(tv))) {
 			this.listaDeTVs.add(tv);
 		} else {
 			throw new ExceptionTVCadastrada("TV já cadastrada", tv);
