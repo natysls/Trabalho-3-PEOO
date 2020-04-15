@@ -16,7 +16,7 @@ public abstract class Televisao {
         this.canaisCadastrados = canaisDisponiveis;
         this.volume = 5;
     }
-
+    
 	public int getVolume() {
 		return volume;
 	}
@@ -79,24 +79,17 @@ public abstract class Televisao {
     public void alterarCanal(String alteracao) {
     	int aux = canaisCadastrados.indexOf(canalAtual); //indice do canal atual
     	if(alteracao.equalsIgnoreCase("proximo")) {
-    		aux += 1; //aumenta um indice
-    		aux %= (this.canaisCadastrados.size() - 1);
-    		if(aux < 0){ 
-    			setCanalAtual(this.canaisCadastrados.get(0));
-    		}else {
-    			//aux;
-    		}
+    		aux += 1; //aumenta um
+    		aux %= canaisCadastrados.size(); //se for aux= 10%10 = 0(aux inicial)
     	}else if(alteracao.equalsIgnoreCase("anterior")){
     		aux -= 1; //diminui um
-    		if(aux == this.canaisCadastrados.size()) {
-    			for (int i = aux; i < canaisCadastrados.size(); i++) { 
-    				  setCanalAtual(this.canaisCadastrados.get(i)); 
-    			}
+    		if(aux < 0){ 
+    			aux = canaisCadastrados.size() - aux; //menos com menos ex: -(-1)
     		}else {
-    			System.out.println("Canal invalido");
+    			aux %= canaisCadastrados.size();
     		}
     	}
-    	setCanalAtual(this.canaisCadastrados.get(aux));
+    	setCanalAtual(this.canaisCadastrados.get(aux)); 	
     }
     
     public void informarDados() {
