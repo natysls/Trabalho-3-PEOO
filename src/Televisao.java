@@ -76,17 +76,17 @@ public abstract class Televisao {
     	}
     }
     
-    public void alterarCanal(String alteracao) {
+    public void alterarCanal(String alteracao) { 
     	int aux = canaisCadastrados.indexOf(canalAtual); //indice do canal atual
-    	if(alteracao.equalsIgnoreCase("proximo")) {
+    	if(alteracao.equalsIgnoreCase("proximo")) { //lógica: r = D - d * q (formula do resto da divisão)
     		aux += 1; //aumenta um
     		aux %= canaisCadastrados.size(); //se for aux= 10%10 = 0(aux inicial)
-    	}else if(alteracao.equalsIgnoreCase("anterior")){
+    	}else if(alteracao.equalsIgnoreCase("anterior")){ //lógica: D = d * q + r (formula da divisão)
     		aux -= 1; //diminui um
-    		if(aux < 0){ 
-    			aux = canaisCadastrados.size() - aux; //menos com menos ex: -(-1)
-    		}else {
+    		if(aux >= 0){ 
     			aux %= canaisCadastrados.size();
+    		}else {
+    			aux = canaisCadastrados.size() + aux;
     		}
     	}
     	setCanalAtual(this.canaisCadastrados.get(aux)); 	
