@@ -12,8 +12,8 @@ public abstract class Televisao {
 	public static final int VOLUME_MAX = 10;
 	public static final int VOLUME_MIN = 0;
 
-	public Televisao(ArrayList<Canal> canaisDisponiveis) {
-		this.canaisCadastrados = canaisDisponiveis;
+	public Televisao(ArrayList<Canal> canaisCadastrados) {
+		this.canaisDisponiveis = canaisCadastrados;
 		this.volume = 5;
 	}
 
@@ -59,10 +59,8 @@ public abstract class Televisao {
 	public abstract void cadastrarCanais();
 
 	public boolean verificarCanalExistente(Canal canal) {
-		for (Canal canalInterno : this.canaisCadastrados) {
-			if (!(canalInterno.getNumero() == canal.getNumero())) {
-				return false;
-			}
+		if (!(this.canaisCadastrados.contains(canal))) {
+			return false;
 		}
 		return true;
 	}
@@ -100,10 +98,7 @@ public abstract class Televisao {
 	}
 
 	public void mostrarGrade() { // lista ordenada
-		for (Canal canais : canaisCadastrados) {
-			System.out.println(this.canaisCadastrados.stream().sorted(Comparator.comparing(Canal::getNumero))
-					.collect(Collectors.toList()));
-		}
+		this.canaisCadastrados.stream().sorted(Comparator.comparing(Canal::getNumero)).forEach(System.out::println);
 	}
 
 }

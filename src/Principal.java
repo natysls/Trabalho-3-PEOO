@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Principal {
 	public static void main(String[] args) {
-		ArrayList<Canal> canais = new ArrayList<Canal>();
+		ArrayList<Canal> canais = new ArrayList<Canal>(); // lista de canais
 		canais.add(new Canal(2, "RedeTV", false));
 		canais.add(new Canal(8, "Record", false));
 		canais.add(new Canal(10, "Globo", true));
@@ -40,6 +40,7 @@ public class Principal {
 
 	}
 
+	// Imprime as opções
 	private static void opcoes(Televisao tv, ControleRemoto controle) {
 		Scanner scan = new Scanner(System.in);
 		while (true) { // loop infinito.
@@ -58,9 +59,17 @@ public class Principal {
 				controle.anteriorCanal();
 				System.out.println("Canal: " + tv.getCanalAtual() + "\n");
 			} else if (opcao == 5) {
-				controle.informarDados();
+				controle.informarDados(tv);
 			} else if (opcao == 6) {
-				// controle.sintonizarCanal(numCanal);
+				Scanner tec = new Scanner(System.in);
+				System.out.println("Digite o canal desejado");
+				int numCanal = tec.nextInt();
+				try {
+					controle.sintonizarCanal(numCanal);
+				} catch (ExceptionCanalInexistente e) {
+					e.getMessage();
+				}
+				System.out.println("Canal Atual: " + tv.getCanalAtual() + "\n");
 			} else if (opcao == 7) {
 				controle.mostrarGrade();
 			} else if (opcao == 0) { // o Loop para aqui.
@@ -79,7 +88,7 @@ public class Principal {
 		System.out.println("2 - Diminuir Volume");
 		System.out.println("3 - Proximo Canal");
 		System.out.println("4 - Anterior Canal");
-		System.out.println("5 - Informar Dados do Canal");
+		System.out.println("5 - Informar Dados do Canal Atual");
 		System.out.println("6 - Sintonizar Canal");
 		System.out.println("7 - Mostrar Grade");
 		System.out.println("0 - EXIT");

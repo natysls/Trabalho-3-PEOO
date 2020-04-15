@@ -34,6 +34,7 @@ public class ControleRemoto {
 	public void sintonizarCanal(int numCanal) throws ExceptionCanalInexistente {
 		for (Televisao tv : listaDeTVs) {
 			tv.sintonizar(numCanal);
+			
 		}
 	}
 
@@ -49,10 +50,8 @@ public class ControleRemoto {
 		}
 	}
 
-	public void informarDados() {
-		for (Televisao tv : listaDeTVs) {
-			tv.informarDados();
-		}
+	public void informarDados(Televisao tv) {
+		tv.informarDados();
 	}
 
 	public void mostrarGrade() {

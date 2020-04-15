@@ -19,7 +19,7 @@ public class TVHD extends Televisao {
 	@Override
 	public void cadastrarCanais() {
 		for (Canal canal : canaisDisponiveis) {
-			if (canal.isEhHD() == true) {
+			if (canal.isEhHD()) {
 				this.canaisCadastrados.add(canal);
 			}
 		}
