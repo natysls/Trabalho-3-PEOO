@@ -69,7 +69,7 @@ public abstract class Televisao {
 		for (Canal canal : canaisCadastrados) {
 			if (canal.getNumero() == numeroCanal) {
 				if (verificarCanalExistente(canal)) {
-					canal.setNumero(numeroCanal);
+					canalAtual.setNumero(numeroCanal);
 				} else {
 					throw new ExceptionCanalInexistente("Canal inexistente", numeroCanal);
 				}
