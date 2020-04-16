@@ -24,7 +24,6 @@ public class TVHD extends Televisao {
 			}
 		}
 		this.canalAtual = this.canaisCadastrados.get(canaisCadastrados.size() - 1); // ultimo canal
-
 	}
 
 }

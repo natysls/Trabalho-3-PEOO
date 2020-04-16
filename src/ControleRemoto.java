@@ -10,7 +10,6 @@ public class ControleRemoto {
 	public void setListaDeTVs(ArrayList<Televisao> listaDeTVs) {
 		this.listaDeTVs = listaDeTVs;
 	}
-	
 
 	public void adicionarTV(Televisao tv) throws ExceptionTVCadastrada {
 		if (!(this.listaDeTVs.contains(tv))) {
@@ -35,7 +34,7 @@ public class ControleRemoto {
 	public void sintonizarCanal(int numCanal) throws ExceptionCanalInexistente {
 		for (Televisao tv : listaDeTVs) {
 			tv.sintonizar(numCanal);
-			
+
 		}
 	}
 

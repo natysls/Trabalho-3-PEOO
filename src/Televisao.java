@@ -3,7 +3,7 @@ import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public abstract class Televisao {
-	private String id;
+	private String id; // LG345
 	private int volume;
 	Canal canalAtual;
 	ArrayList<Canal> canaisCadastrados = new ArrayList<>();

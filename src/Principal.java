@@ -4,9 +4,12 @@ public class Principal {
 	public static void main(String[] args) {
 		ArrayList<Canal> canais = new ArrayList<Canal>(); // lista de canais
 		canais.add(new Canal(2, "RedeTV", false));
+		canais.add(new Canal(5, "Cultura", true));
 		canais.add(new Canal(8, "Record", false));
 		canais.add(new Canal(10, "Globo", true));
 		canais.add(new Canal(12, "SBT", true));
+		canais.add(new Canal(14, "RecordNews", false));
+		canais.add(new Canal(17, "TvUnião", true));
 		canais.add(new Canal(19, "RedeBrasil", false));
 		canais.add(new Canal(20, "Band", true));
 
