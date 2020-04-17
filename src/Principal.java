@@ -30,7 +30,7 @@ public class Principal {
 				} catch (ExceptionTVCadastrada e) {
 					System.out.println(e);
 				}
-				opcoes(smarttv, controle, canais);
+				opcoes(smarttv, controle);
 			} else if (escolha.equalsIgnoreCase("B")) {
 				tvhd.cadastrarCanais(); // vai cadastrar so quem é HD
 				try {
@@ -38,7 +38,7 @@ public class Principal {
 				} catch (ExceptionTVCadastrada e) {
 					System.out.println(e);
 				}
-				opcoes(tvhd, controle, canais);
+				opcoes(tvhd, controle);
 			} else {
 				System.out.println("Opção inválida");
 			}
@@ -47,7 +47,7 @@ public class Principal {
 	}
 
 	// Realiza as opções
-	private static void opcoes(Televisao tv, ControleRemoto controle, ArrayList<Canal> canais) {
+	private static void opcoes(Televisao tv, ControleRemoto controle) {
 		Scanner scan = new Scanner(System.in);
 		while (true) { // loop infinito.
 			printMenu(); // imprime o Menu
